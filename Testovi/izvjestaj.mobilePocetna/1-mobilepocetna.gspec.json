@@ -1,0 +1,642 @@
+{
+  "testId" : "1-mobilepocetna.gspec",
+  "name" : "mobilePocetna.gspec",
+  "report" : {
+    "nodes" : [ {
+      "name" : "Mutation test",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "check  mobilePocetna.gspec --url http://localhost/pocetna.html --size 480x800 --offset 5 --htmlreport izvjestaj.mobilePocetna",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: mobilePocetna.gspec included tags: ",
+          "status" : "error",
+          "time" : 1573609823772,
+          "sections" : [ {
+            "name" : "Meni section",
+            "place" : {
+              "filePath" : "mobilePocetna.gspec",
+              "lineNumber" : 9
+            },
+            "objects" : [ {
+              "name" : "meni",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 11
+                },
+                "name" : "centered horizontally inside viewport",
+                "highlight" : [ "meni", "viewport" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 12
+                },
+                "name" : "height 155 to 158px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "meni",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "meni",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "155 to 158px",
+                  "realDistance" : "157px"
+                } ],
+                "highlight" : [ "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 13
+                },
+                "name" : "contains menu_item_1",
+                "highlight" : [ "meni", "menu_item_1" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 14
+                },
+                "name" : "above sadrzaj 8 to 10px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "meni",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "top"
+                  },
+                  "expectedDistance" : "8 to 10px",
+                  "realDistance" : "8px"
+                } ],
+                "highlight" : [ "meni", "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 15
+                },
+                "name" : "width 95 to 99% of viewport/width",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "meni",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "meni",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "95 to 99% [428 to 446px]",
+                  "realDistance" : "96% [435px]"
+                } ],
+                "highlight" : [ "meni" ]
+              } ]
+            }, {
+              "name" : "logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 17
+                },
+                "name" : "centered horizontally inside viewport",
+                "highlight" : [ "logo", "viewport" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 18
+                },
+                "name" : "inside partly meni 121px bottom",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "logo",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "meni",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "121px",
+                  "realDistance" : "121px"
+                } ],
+                "highlight" : [ "logo", "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 19
+                },
+                "name" : "width 95 to 99% of viewport/width",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "logo",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "logo",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "95 to 99% [428 to 446px]",
+                  "realDistance" : "96% [433px]"
+                } ],
+                "highlight" : [ "logo" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 20
+                },
+                "name" : "height 68 to 74px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "logo",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "logo",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "68 to 74px",
+                  "realDistance" : "70px"
+                } ],
+                "highlight" : [ "logo" ]
+              } ]
+            }, {
+              "name" : "menu_item_1",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 22
+                },
+                "name" : "near menu_item_2 -410px left",
+                "errors" : [ "\"menu_item_1\" is -393px left instead of -410px" ],
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_1",
+                    "edge" : "right"
+                  },
+                  "to" : {
+                    "object" : "menu_item_2",
+                    "edge" : "left"
+                  },
+                  "expectedDistance" : "-410px",
+                  "realDistance" : "-393px"
+                } ],
+                "highlight" : [ "menu_item_1", "menu_item_2" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 23
+                },
+                "name" : "height 15 to 20px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_1",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "menu_item_1",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "15 to 20px",
+                  "realDistance" : "18px"
+                } ],
+                "highlight" : [ "menu_item_1" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 24
+                },
+                "name" : "inside ul 72px bottom",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_1",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "ul",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "72px",
+                  "realDistance" : "72px"
+                } ],
+                "highlight" : [ "menu_item_1", "ul" ]
+              } ]
+            }, {
+              "name" : "menu_item_2",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 26
+                },
+                "name" : "inside ul 0px bottom",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_2",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "ul",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "0px",
+                  "realDistance" : "0px"
+                } ],
+                "highlight" : [ "menu_item_2", "ul" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 27
+                },
+                "name" : "height 15 to 20px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_2",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "menu_item_2",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "15 to 20px",
+                  "realDistance" : "18px"
+                } ],
+                "highlight" : [ "menu_item_2" ]
+              } ]
+            }, {
+              "name" : "ul",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 29
+                },
+                "name" : "centered horizontally inside meni 1px",
+                "highlight" : [ "ul", "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 30
+                },
+                "name" : "inside meni",
+                "meta" : [ ],
+                "highlight" : [ "ul", "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 31
+                },
+                "name" : "contains menu_item_1",
+                "highlight" : [ "ul", "menu_item_1" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 32
+                },
+                "name" : "inside viewport 7 to 11px left",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "ul",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "viewport",
+                    "edge" : "left"
+                  },
+                  "expectedDistance" : "7 to 11px",
+                  "realDistance" : "9px"
+                } ],
+                "highlight" : [ "ul", "viewport" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 33
+                },
+                "name" : "below logo",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "ul",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "logo",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : ">= 0px",
+                  "realDistance" : "15px"
+                } ],
+                "highlight" : [ "ul", "logo" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Main section",
+            "place" : {
+              "filePath" : "mobilePocetna.gspec",
+              "lineNumber" : 34
+            },
+            "objects" : [ {
+              "name" : "sadrzaj",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 36
+                },
+                "name" : "below logo",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "sadrzaj",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "logo",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : ">= 0px",
+                  "realDistance" : "129px"
+                } ],
+                "highlight" : [ "sadrzaj", "logo" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 37
+                },
+                "name" : "width 97 to 99% of viewport/width",
+                "errors" : [ "\"sadrzaj\" width is 96% [435px] which is not in range of 97 to 99% [437 to 446px]" ],
+                "meta" : [ {
+                  "from" : {
+                    "object" : "sadrzaj",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "97 to 99% [437 to 446px]",
+                  "realDistance" : "96% [435px]"
+                } ],
+                "highlight" : [ "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 38
+                },
+                "name" : "below meni",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "sadrzaj",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "meni",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : ">= 0px",
+                  "realDistance" : "8px"
+                } ],
+                "highlight" : [ "sadrzaj", "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 39
+                },
+                "name" : "contains slika",
+                "highlight" : [ "sadrzaj", "slika" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 40
+                },
+                "name" : "centered horizontally inside viewport",
+                "highlight" : [ "sadrzaj", "viewport" ]
+              } ]
+            }, {
+              "name" : "slika",
+              "specs" : [ {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 42
+                },
+                "name" : "inside sadrzaj 19 to 22px top",
+                "errors" : [ "\"slika\" is 10px top which is not in range of 19 to 22px" ],
+                "meta" : [ {
+                  "from" : {
+                    "object" : "slika",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "top"
+                  },
+                  "expectedDistance" : "19 to 22px",
+                  "realDistance" : "10px"
+                } ],
+                "highlight" : [ "slika", "sadrzaj" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 43
+                },
+                "name" : "inside sadrzaj 170 to 172px left",
+                "errors" : [ "\"slika\" is 145px left which is not in range of 170 to 172px" ],
+                "meta" : [ {
+                  "from" : {
+                    "object" : "slika",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "left"
+                  },
+                  "expectedDistance" : "170 to 172px",
+                  "realDistance" : "145px"
+                } ],
+                "highlight" : [ "slika", "sadrzaj" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 44
+                },
+                "name" : "inside sadrzaj 493px right",
+                "errors" : [ "\"slika\" is 145px right instead of 493px" ],
+                "meta" : [ {
+                  "from" : {
+                    "object" : "slika",
+                    "edge" : "right"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "493px",
+                  "realDistance" : "145px"
+                } ],
+                "highlight" : [ "slika", "sadrzaj" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 45
+                },
+                "name" : "inside sadrzaj 926px bottom",
+                "errors" : [ "\"slika\" is 948px bottom instead of 926px" ],
+                "meta" : [ {
+                  "from" : {
+                    "object" : "slika",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "926px",
+                  "realDistance" : "948px"
+                } ],
+                "highlight" : [ "slika", "sadrzaj" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 46
+                },
+                "name" : "width 31% of viewport/width",
+                "errors" : [ "\"slika\" width is 32% [145px] instead of 31% [139px]" ],
+                "meta" : [ {
+                  "from" : {
+                    "object" : "slika",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "slika",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "31% [139px]",
+                  "realDistance" : "32% [145px]"
+                } ],
+                "highlight" : [ "slika" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 47
+                },
+                "name" : "visible",
+                "highlight" : [ "slika" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 48
+                },
+                "name" : "width 313px",
+                "errors" : [ "\"slika\" width is 145px instead of 313px" ],
+                "meta" : [ {
+                  "from" : {
+                    "object" : "slika",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "slika",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "313px",
+                  "realDistance" : "145px"
+                } ],
+                "highlight" : [ "slika" ]
+              }, {
+                "status" : "error",
+                "place" : {
+                  "filePath" : "mobilePocetna.gspec",
+                  "lineNumber" : 49
+                },
+                "name" : "height 226px",
+                "errors" : [ "\"slika\" height is 104px instead of 226px" ],
+                "meta" : [ {
+                  "from" : {
+                    "object" : "slika",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "slika",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "226px",
+                  "realDistance" : "104px"
+                } ],
+                "highlight" : [ "slika" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "meni" : {
+              "area" : [ 8, 48, 435, 157 ]
+            },
+            "slika" : {
+              "area" : [ 153, 223, 145, 104 ]
+            },
+            "viewport" : {
+              "area" : [ 0, 0, 451, 719 ]
+            },
+            "ul" : {
+              "area" : [ 9, 99, 433, 90 ]
+            },
+            "logo" : {
+              "area" : [ 9, 14, 433, 70 ]
+            },
+            "menu_item_1" : {
+              "area" : [ 49, 99, 393, 18 ]
+            },
+            "sadrzaj" : {
+              "area" : [ 8, 213, 435, 1062 ]
+            },
+            "menu_item_2" : {
+              "area" : [ 49, 171, 393, 18 ]
+            }
+          },
+          "screenshot" : "layout-1-screenshot.png",
+          "type" : "layout"
+        }, {
+          "name" : "Mutation testing: mobilePocetna.gspec included tags: ",
+          "status" : "error",
+          "time" : 1573609823772,
+          "mutationReport" : {
+            "objectMutationStatistics" : { },
+            "totalPassed" : 0,
+            "totalFailed" : 0,
+            "error" : "Cannot perform mutation testing. There are errors in initial layout validation report",
+            "failedRatio" : 0.0,
+            "totalMutations" : 0
+          },
+          "type" : "mutation"
+        } ],
+        "time" : 1573609815763,
+        "type" : "node"
+      } ],
+      "time" : 1573609805223,
+      "type" : "node"
+    } ]
+  }
+}

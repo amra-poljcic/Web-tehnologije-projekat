@@ -1,0 +1,64 @@
+.meni, .sadrzaj {
+	background-color: #b0c4dd;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgreen;
+	text-align:center;
+}
+
+.meni ul li {
+	display: inline;
+}
+
+.meni ul li a {
+	color: black;
+}
+
+#logo img {
+	width: 70px;
+	height: 70px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -35px;
+}
+
+.meni {
+	margin-bottom: 2%;
+}
+
+.sadrzaj {
+	padding: 2%;
+	width: 95.6%;
+}
+
+.sadrzaj img {
+	vertical-align: middle;
+	width: 31vw;
+	height: auto;
+	padding-top: 2%;  
+	margin: auto;    
+}
+
+body {
+	font-family: "Arial", cursive, sans-serif;
+	font-size: 15px;
+	word-spacing: 3px;
+	padding-top: 40px;
+}
+
+@media (max-width: 600px) {
+	.meni ul li {
+		display: block;
+		padding-right: 7%;
+	}
+
+	.sadrzaj {
+		display: inline-grid;
+	}
+
+	.sadrzaj img {
+		max-width: 80%;
+		height: auto;
+	}
+}

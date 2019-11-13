@@ -1,0 +1,140 @@
+.meni, .sadrzaj {
+  background-color: #b0c4dd;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgreen;
+  text-align:center;
+}
+
+.meni ul li {
+	display: inline;
+}
+
+.meni ul li a {
+	color: black;
+}
+
+#logo img {
+  width: 70px;
+  height: 70px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -35px;
+}
+
+.meni {
+  margin-bottom: 2%;
+}
+
+.sadrzaj {
+  float: left;
+  padding: 2%;
+}
+
+#tabelaKalendar {
+  table-layout: fixed;
+  width: 100%;
+  border: 3px solid #3d699c;
+  padding: 1.5%;
+  empty-cells: hide;
+  background-color: #b0c4dd;
+  margin-bottom: 2%;
+}
+
+#listaSala {
+  margin-bottom: 2%;
+}
+
+table caption {
+  display: inline-block; 
+  font-weight: bold;
+  margin-bottom: 10%;
+  float: left;
+}
+
+table {
+  margin-top: 1%;
+}
+
+td {
+  border: 3px solid #3d699c;
+
+}
+
+tr {
+  word-spacing: 1%;
+}
+
+.prethodni, .sljedeci {
+  padding: 1%;
+  border: 3px solid #3d699c;
+  text-decoration: none;
+  color: black;
+}
+
+.prethodni {
+  float: left;
+}
+
+.sljedeci {
+  float: right;
+}
+
+.zauzeta {
+  vertical-align: top;
+  border: 3px solid #3d699c;
+  padding: 10px 0;
+  text-align: center;
+  height: 35px;
+  background:linear-gradient(0deg, #991717 0, #991717 35%, #3d699c 35%, #3d699c 41%, #ffffff 41%, #ffffff 100%);    
+}
+
+.slobodna {
+  vertical-align: top;
+  border: 3px solid #3d699c;
+  padding: 10px 0;
+  text-align: center;
+  height: 35px;
+  background:linear-gradient(0deg, #066f07 0, #066f07 35%, #3d699c 35%, #3d699c 41%, #ffffff 41%, #ffffff 100%);    
+}
+
+body {
+  font-family: "Arial", cursive, sans-serif;
+  font-size: 15px;
+  word-spacing: 3px;
+  padding-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .meni ul li {
+    padding-right: 7%;
+    display: block;
+  }
+  
+  td {
+    display: none;
+  }
+
+  tr[id=Dani] > td {
+    display: block;
+    margin-top: 1%;
+  }
+
+  .slobodna {
+    display: none;
+  }
+
+  .zauzeta {
+    display: none;
+  }
+
+  th {
+    display: none;
+  }
+
+  .dani td {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}

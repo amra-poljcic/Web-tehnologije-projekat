@@ -1,0 +1,135 @@
+.meni, .sadrzaj {
+	background-color: #b0c4dd;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgreen;
+}
+
+.meni ul li {
+	display: inline;
+}
+
+#logo img {
+	width: 70px;
+	height: 70px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -35px;
+}
+
+.meni {
+	margin-bottom: 2%;
+	text-align: center;
+}
+
+.meni ul li a {
+	color: black;
+}
+
+body {
+	font-family: "Arial", cursive, sans-serif;
+	font-size: 15px;
+	word-spacing: 3px;
+	padding-top: 40px;
+}
+
+.kancelarija {
+	background-color: #4E4545;
+}
+
+.slobodnaSala {
+	background-color: green;
+}
+
+.zauzetaSala {
+	background-color: red;
+}
+
+.headerSprat {
+	text-align-last: right;
+	width: 12%;
+	padding-left: 2%;
+	padding-right: 2%;
+	background-color: #A9A5A5;
+}
+
+.prvi {
+	text-align-last: center;
+}
+
+.sadrzaj {
+	padding: 2%;
+}
+
+table {
+	border-spacing: 0;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+}
+
+td,th {
+	border: thin inset black; 
+	font-weight: normal;
+}
+
+td {
+	vertical-align:top;
+	text-align: center;
+}
+
+tr:nth-child(2) {
+	line-height: 40px;
+}
+
+tr:nth-child(1) {
+	line-height: 40px;
+}
+
+.headerSprat:nth-child(6) {
+	width: 18%;
+}
+
+tr #bezOkvira {
+	border: 0;
+	background-color: #b0c4dd
+}
+
+.headerRedni {
+	padding: 5px;
+	text-align: left;
+	width: 28%;
+	background-color: #c6c3c3;
+}
+
+@media only screen and (max-width:600px) {
+	.meni ul li a {
+		padding-right: 7%;
+		display: block;
+	}
+	
+	td:nth-child(6) {
+		width: 26%;
+	}
+
+	td:nth-child(5) {
+		width: 18%;
+	}
+
+	td:nth-child(4) {
+		width: 18%;
+	}
+
+	td:nth-child(3) {
+		width: 18%;
+	}
+
+	td:nth-child(2) {
+		width: 18%;
+	}
+
+	th {
+		display: none;
+	}
+}

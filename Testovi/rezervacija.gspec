@@ -1,0 +1,65 @@
+@objects
+	meni		css     .meni
+	logo 		css     #logo
+	menu_item_1	xpath	//div[@class='meni']/ul/li[1]
+	menu_item_2	xpath	//div[@class='meni']/ul/li[5]
+	ul 			css		.meni ul
+	sadrzaj 	css		.sadrzaj
+	lista 		css		#listaSala
+	tabela		css 	#tabelaKalendar
+	pre			css 	.prethodni
+= Meni section =
+	meni:
+		centered horizontally inside viewport
+		height 83 to 88px
+		contains menu_item_1
+		above sadrzaj 16 to 22px
+		width 97 to 99% of viewport/width
+	logo:
+		centered horizontally inside viewport
+		inside partly meni 49px bottom
+		width 97 to 99% of viewport/width
+		height 68 to 74px
+	menu_item_1:
+		aligned horizontally all menu_item_2
+		near menu_item_2 160 to 165px left
+		height 15 to 20px
+		inside ul 0 to 2px bottom, 0px top
+	menu_item_2:
+		inside ul 0 to 2px bottom, 0px top
+		height 15 to 20px
+	ul:
+		centered horizontally inside meni 1px
+		inside meni
+		contains menu_item_1
+		inside viewport 7 to 11px left
+		below logo
+= Main section =
+	sadrzaj:
+		below logo
+		width 97 to 99% of viewport/width
+		below meni
+		contains tabela
+		contains pre
+		centered horizontally inside viewport
+	lista:
+		inside sadrzaj 266px left 
+		inside sadrzaj 660px right
+		inside sadrzaj 521px bottom 
+		above tabela 26 to 30px
+		width 4 to 6% of viewport/width
+	tabela:
+		below meni  88 to 90px 
+		inside sadrzaj 18 to 22px left
+		inside sadrzaj 20 to 244px right
+		visible
+		width 937px 
+        height 411px 
+    pre:
+    	below tabela 18 to 20px
+    	width 8 to 10% of viewport/width
+    	inside sadrzaj 18 to 22px left
+		inside sadrzaj 870 to 875px right
+		below tabela  18 to 20px 
+
+		

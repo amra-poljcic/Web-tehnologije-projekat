@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rezervacija</title>
+	<link rel="stylesheet" href="rezervacija.css">
+	<meta charset="UTF-8">
+</head>
+<body>
+
+	<div class="meni">
+		<div id="logo">
+			<img src="logo.jpg" alt="Logo">
+		</div>
+		<ul>
+			<li><a href="pocetna.html">Početna</a> </li>
+			<li><a href="sale.html">Sale</a></li>
+			<li><a href="unos.html"> Unos</a></li>
+			<li>Rezervacije</li>
+			<li><a href="">Osobe</a></li>
+		</ul>
+	</div>
+
+
+	<div class="sadrzaj">
+
+		<label>Sale</label>
+		<select id = "listaSala">
+			<option value = "1">0-01</option>
+			<option value = "2">0-02</option>
+			<option value = "3">0-03</option>
+			<option value = "4">0-04</option>
+			<option value = "5">0-05</option>
+			<option value = "6">0-06</option>
+			<option value = "7">0-07</option>
+			<option value = "8">0-08</option>
+			<option value = "9">0-09</option>
+			<option value = "10">1-01</option>
+			<option value = "11">1-02</option>
+			<option value = "12">1-03</option>
+			<option value = "13">1-04</option>
+			<option value = "14">1-05</option>
+			<option value = "15">1-06</option>
+			<option value = "16">1-07</option>
+			<option value = "17">1-08</option>
+			<option value = "18">1-09</option>
+			<option value = "14">VA1</option>
+			<option value = "15">VA2</option>
+			<option value = "16">MA</option>
+			<option value = "17">EE1</option>
+			<option value = "18">EE2</option>
+
+		</select>
+		<label>Periodičnost</label>
+		<input type="checkbox" name="rezervacija" value="DA">
+		<label>Početak</label>
+		<input type="time" name="pocetak">
+		<label>Kraj</label>
+		<input type="time" name="kraj">
+		
+
+		<table id="tabelaKalendar">
+			<caption>Novembar</caption>
+			<tr id="Dani">
+				<td>PON</td>
+				<td>UTO</td>
+				<td>SRI</td>
+				<td>ČET</td>
+				<td>PET</td>
+				<td>SUB</td>
+				<td>NED</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="slobodna">1</td>
+				<td class="slobodna">2</td>
+				<td class="slobodna">3</td>
+			</tr>
+			<tr>
+				<td class="slobodna">4</td>
+				<td class="zauzeta">5</td>
+				<td class="slobodna">6</td>
+				<td class="slobodna">7</td>
+				<td class="slobodna">8</td>
+				<td class="slobodna">9</td>
+				<td class="slobodna">10</td>
+			</tr>
+			<tr>
+				<td class="slobodna">11</td>
+				<td class="zauzeta">12</td>
+				<td class="slobodna">13</td>
+				<td class="slobodna">14</td>
+				<td class="slobodna">15</td>
+				<td class="slobodna">16</td>
+				<td class="slobodna">17</td>
+			</tr>
+			<tr>
+				<td class="slobodna">18</td>
+				<td class="zauzeta">19</td>
+				<td class="slobodna">20</td>
+				<td class="slobodna">21</td>
+				<td class="slobodna">22</td>
+				<td class="slobodna">23</td>
+				<td class="slobodna">24</td>
+			</tr>
+			<tr>
+				<td class="slobodna">25</td>
+				<td class="zauzeta">26</td>
+				<td class="slobodna">27</td>
+				<td class="slobodna">28</td>
+				<td class="slobodna">29</td>
+				<td class="slobodna">30</td>
+				<td></td>
+			</tr>	
+		</table>
+		<a href="#" class="prethodni">Prethodni</a>
+		<a href="#" class="sljedeci">Sljedeći</a>
+	</div>
+</body>
+</html>
+
+
+
+
+

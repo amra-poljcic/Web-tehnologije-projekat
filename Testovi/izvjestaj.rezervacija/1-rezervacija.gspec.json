@@ -1,0 +1,888 @@
+{
+  "testId" : "1-rezervacija.gspec",
+  "name" : "rezervacija.gspec",
+  "report" : {
+    "nodes" : [ {
+      "name" : "Mutation test",
+      "status" : "info",
+      "nodes" : [ {
+        "name" : "check  rezervacija.gspec --url http://localhost/rezervacija.html --size 1024x768 --offset 5 --htmlreport izvjestaj.rezervacija",
+        "status" : "info",
+        "nodes" : [ {
+          "name" : "Check layout: rezervacija.gspec included tags: ",
+          "status" : "info",
+          "time" : 1573608345735,
+          "sections" : [ {
+            "name" : "Meni section",
+            "place" : {
+              "filePath" : "rezervacija.gspec",
+              "lineNumber" : 11
+            },
+            "objects" : [ {
+              "name" : "meni",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 13
+                },
+                "name" : "centered horizontally inside viewport",
+                "highlight" : [ "meni", "viewport" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 14
+                },
+                "name" : "height 83 to 88px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "meni",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "meni",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "83 to 88px",
+                  "realDistance" : "85px"
+                } ],
+                "highlight" : [ "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 15
+                },
+                "name" : "contains menu_item_1",
+                "highlight" : [ "meni", "menu_item_1" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 16
+                },
+                "name" : "above sadrzaj 16 to 22px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "meni",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "top"
+                  },
+                  "expectedDistance" : "16 to 22px",
+                  "realDistance" : "19px"
+                } ],
+                "highlight" : [ "meni", "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 17
+                },
+                "name" : "width 97 to 99% of viewport/width",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "meni",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "meni",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "97 to 99% [965 to 985px]",
+                  "realDistance" : "98% [979px]"
+                } ],
+                "highlight" : [ "meni" ]
+              } ]
+            }, {
+              "name" : "logo",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 19
+                },
+                "name" : "centered horizontally inside viewport",
+                "highlight" : [ "logo", "viewport" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 20
+                },
+                "name" : "inside partly meni 49px bottom",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "logo",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "meni",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "49px",
+                  "realDistance" : "49px"
+                } ],
+                "highlight" : [ "logo", "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 21
+                },
+                "name" : "width 97 to 99% of viewport/width",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "logo",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "logo",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "97 to 99% [965 to 985px]",
+                  "realDistance" : "98% [977px]"
+                } ],
+                "highlight" : [ "logo" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 22
+                },
+                "name" : "height 68 to 74px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "logo",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "logo",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "68 to 74px",
+                  "realDistance" : "70px"
+                } ],
+                "highlight" : [ "logo" ]
+              } ]
+            }, {
+              "name" : "menu_item_1",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 24
+                },
+                "name" : "aligned horizontally all menu_item_2",
+                "highlight" : [ "menu_item_1", "menu_item_2" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 25
+                },
+                "name" : "near menu_item_2 160 to 165px left",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_1",
+                    "edge" : "right"
+                  },
+                  "to" : {
+                    "object" : "menu_item_2",
+                    "edge" : "left"
+                  },
+                  "expectedDistance" : "160 to 165px",
+                  "realDistance" : "161px"
+                } ],
+                "highlight" : [ "menu_item_1", "menu_item_2" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 26
+                },
+                "name" : "height 15 to 20px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_1",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "menu_item_1",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "15 to 20px",
+                  "realDistance" : "17px"
+                } ],
+                "highlight" : [ "menu_item_1" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 27
+                },
+                "name" : "inside ul 0 to 2px bottom, 0px top",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_1",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "ul",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "0 to 2px",
+                  "realDistance" : "1px"
+                }, {
+                  "from" : {
+                    "object" : "menu_item_1",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "ul",
+                    "edge" : "top"
+                  },
+                  "expectedDistance" : "0px",
+                  "realDistance" : "0px"
+                } ],
+                "highlight" : [ "menu_item_1", "ul" ]
+              } ]
+            }, {
+              "name" : "menu_item_2",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 29
+                },
+                "name" : "inside ul 0 to 2px bottom, 0px top",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_2",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "ul",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "0 to 2px",
+                  "realDistance" : "1px"
+                }, {
+                  "from" : {
+                    "object" : "menu_item_2",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "ul",
+                    "edge" : "top"
+                  },
+                  "expectedDistance" : "0px",
+                  "realDistance" : "0px"
+                } ],
+                "highlight" : [ "menu_item_2", "ul" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 30
+                },
+                "name" : "height 15 to 20px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "menu_item_2",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "menu_item_2",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "15 to 20px",
+                  "realDistance" : "17px"
+                } ],
+                "highlight" : [ "menu_item_2" ]
+              } ]
+            }, {
+              "name" : "ul",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 32
+                },
+                "name" : "centered horizontally inside meni 1px",
+                "highlight" : [ "ul", "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 33
+                },
+                "name" : "inside meni",
+                "meta" : [ ],
+                "highlight" : [ "ul", "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 34
+                },
+                "name" : "contains menu_item_1",
+                "highlight" : [ "ul", "menu_item_1" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 35
+                },
+                "name" : "inside viewport 7 to 11px left",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "ul",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "viewport",
+                    "edge" : "left"
+                  },
+                  "expectedDistance" : "7 to 11px",
+                  "realDistance" : "9px"
+                } ],
+                "highlight" : [ "ul", "viewport" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 36
+                },
+                "name" : "below logo",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "ul",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "logo",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : ">= 0px",
+                  "realDistance" : "15px"
+                } ],
+                "highlight" : [ "ul", "logo" ]
+              } ]
+            } ]
+          }, {
+            "name" : "Main section",
+            "place" : {
+              "filePath" : "rezervacija.gspec",
+              "lineNumber" : 37
+            },
+            "objects" : [ {
+              "name" : "sadrzaj",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 39
+                },
+                "name" : "below logo",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "sadrzaj",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "logo",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : ">= 0px",
+                  "realDistance" : "68px"
+                } ],
+                "highlight" : [ "sadrzaj", "logo" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 40
+                },
+                "name" : "width 97 to 99% of viewport/width",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "sadrzaj",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "97 to 99% [965 to 985px]",
+                  "realDistance" : "98% [979px]"
+                } ],
+                "highlight" : [ "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 41
+                },
+                "name" : "below meni",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "sadrzaj",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "meni",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : ">= 0px",
+                  "realDistance" : "19px"
+                } ],
+                "highlight" : [ "sadrzaj", "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 42
+                },
+                "name" : "contains tabela",
+                "highlight" : [ "sadrzaj", "tabela" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 43
+                },
+                "name" : "contains pre",
+                "highlight" : [ "sadrzaj", "pre" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 44
+                },
+                "name" : "centered horizontally inside viewport",
+                "highlight" : [ "sadrzaj", "viewport" ]
+              } ]
+            }, {
+              "name" : "lista",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 46
+                },
+                "name" : "inside sadrzaj 266px left",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "lista",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "left"
+                  },
+                  "expectedDistance" : "266px",
+                  "realDistance" : "266px"
+                } ],
+                "highlight" : [ "lista", "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 47
+                },
+                "name" : "inside sadrzaj 660px right",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "lista",
+                    "edge" : "right"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "660px",
+                  "realDistance" : "660px"
+                } ],
+                "highlight" : [ "lista", "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 48
+                },
+                "name" : "inside sadrzaj 521px bottom",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "lista",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "521px",
+                  "realDistance" : "521px"
+                } ],
+                "highlight" : [ "lista", "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 49
+                },
+                "name" : "above tabela 26 to 30px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "lista",
+                    "edge" : "bottom"
+                  },
+                  "to" : {
+                    "object" : "tabela",
+                    "edge" : "top"
+                  },
+                  "expectedDistance" : "26 to 30px",
+                  "realDistance" : "28px"
+                } ],
+                "highlight" : [ "lista", "tabela" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 50
+                },
+                "name" : "width 4 to 6% of viewport/width",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "lista",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "lista",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "4 to 6% [39 to 59px]",
+                  "realDistance" : "5% [53px]"
+                } ],
+                "highlight" : [ "lista" ]
+              } ]
+            }, {
+              "name" : "tabela",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 52
+                },
+                "name" : "below meni  88 to 90px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "tabela",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "meni",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "88 to 90px",
+                  "realDistance" : "89px"
+                } ],
+                "highlight" : [ "tabela", "meni" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 53
+                },
+                "name" : "inside sadrzaj 18 to 22px left",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "tabela",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "left"
+                  },
+                  "expectedDistance" : "18 to 22px",
+                  "realDistance" : "20px"
+                } ],
+                "highlight" : [ "tabela", "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 54
+                },
+                "name" : "inside sadrzaj 20 to 244px right",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "tabela",
+                    "edge" : "right"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "20 to 244px",
+                  "realDistance" : "22px"
+                } ],
+                "highlight" : [ "tabela", "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 55
+                },
+                "name" : "visible",
+                "highlight" : [ "tabela" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 56
+                },
+                "name" : "width 937px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "tabela",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "tabela",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "937px",
+                  "realDistance" : "937px"
+                } ],
+                "highlight" : [ "tabela" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 57
+                },
+                "name" : "height 411px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "tabela",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "tabela",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "411px",
+                  "realDistance" : "411px"
+                } ],
+                "highlight" : [ "tabela" ]
+              } ]
+            }, {
+              "name" : "pre",
+              "specs" : [ {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 59
+                },
+                "name" : "below tabela 18 to 20px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "pre",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "tabela",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "18 to 20px",
+                  "realDistance" : "19px"
+                } ],
+                "highlight" : [ "pre", "tabela" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 60
+                },
+                "name" : "width 8 to 10% of viewport/width",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "pre",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "pre",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "8 to 10% [79 to 99px]",
+                  "realDistance" : "8% [86px]"
+                } ],
+                "highlight" : [ "pre" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 61
+                },
+                "name" : "inside sadrzaj 18 to 22px left",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "pre",
+                    "edge" : "left"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "left"
+                  },
+                  "expectedDistance" : "18 to 22px",
+                  "realDistance" : "20px"
+                } ],
+                "highlight" : [ "pre", "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 62
+                },
+                "name" : "inside sadrzaj 870 to 875px right",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "pre",
+                    "edge" : "right"
+                  },
+                  "to" : {
+                    "object" : "sadrzaj",
+                    "edge" : "right"
+                  },
+                  "expectedDistance" : "870 to 875px",
+                  "realDistance" : "873px"
+                } ],
+                "highlight" : [ "pre", "sadrzaj" ]
+              }, {
+                "status" : "info",
+                "place" : {
+                  "filePath" : "rezervacija.gspec",
+                  "lineNumber" : 63
+                },
+                "name" : "below tabela  18 to 20px",
+                "meta" : [ {
+                  "from" : {
+                    "object" : "pre",
+                    "edge" : "top"
+                  },
+                  "to" : {
+                    "object" : "tabela",
+                    "edge" : "bottom"
+                  },
+                  "expectedDistance" : "18 to 20px",
+                  "realDistance" : "19px"
+                } ],
+                "highlight" : [ "pre", "tabela" ]
+              } ]
+            } ]
+          } ],
+          "objects" : {
+            "meni" : {
+              "area" : [ 8, 48, 979, 85 ]
+            },
+            "lista" : {
+              "area" : [ 274, 174, 53, 20 ]
+            },
+            "tabela" : {
+              "area" : [ 28, 222, 937, 411 ]
+            },
+            "pre" : {
+              "area" : [ 28, 652, 86, 42 ]
+            },
+            "viewport" : {
+              "area" : [ 0, 0, 995, 687 ]
+            },
+            "ul" : {
+              "area" : [ 9, 99, 977, 18 ]
+            },
+            "logo" : {
+              "area" : [ 9, 14, 977, 70 ]
+            },
+            "menu_item_1" : {
+              "area" : [ 384, 99, 61, 17 ]
+            },
+            "sadrzaj" : {
+              "area" : [ 8, 152, 979, 563 ]
+            },
+            "menu_item_2" : {
+              "area" : [ 606, 99, 44, 17 ]
+            }
+          },
+          "screenshot" : "layout-1-screenshot.png",
+          "type" : "layout"
+        }, {
+          "name" : "Mutation testing: rezervacija.gspec included tags: ",
+          "status" : "error",
+          "time" : 1573608345735,
+          "mutationReport" : {
+            "objectMutationStatistics" : {
+              "meni" : {
+                "passed" : 10,
+                "failed" : 0,
+                "failedMutations" : [ ]
+              },
+              "lista" : {
+                "passed" : 9,
+                "failed" : 1,
+                "failedMutations" : [ "lista: move top edge down by 5px" ]
+              },
+              "tabela" : {
+                "passed" : 10,
+                "failed" : 0,
+                "failedMutations" : [ ]
+              },
+              "pre" : {
+                "passed" : 8,
+                "failed" : 2,
+                "failedMutations" : [ "pre: increase height by 5px", "pre: decrease height by 5px" ]
+              },
+              "ul" : {
+                "passed" : 10,
+                "failed" : 0,
+                "failedMutations" : [ ]
+              },
+              "logo" : {
+                "passed" : 10,
+                "failed" : 0,
+                "failedMutations" : [ ]
+              },
+              "menu_item_1" : {
+                "passed" : 9,
+                "failed" : 1,
+                "failedMutations" : [ "menu_item_1: move left edge right by 5px" ]
+              },
+              "sadrzaj" : {
+                "passed" : 10,
+                "failed" : 0,
+                "failedMutations" : [ ]
+              },
+              "menu_item_2" : {
+                "passed" : 8,
+                "failed" : 2,
+                "failedMutations" : [ "menu_item_2: increase width by 5px", "menu_item_2: decrease width by 5px" ]
+              }
+            },
+            "totalPassed" : 84,
+            "totalFailed" : 6,
+            "failedRatio" : 6.666666666666667,
+            "totalMutations" : 90
+          },
+          "type" : "mutation"
+        } ],
+        "time" : 1573608333595,
+        "type" : "node"
+      } ],
+      "time" : 1573608324408,
+      "type" : "node"
+    } ]
+  }
+}
