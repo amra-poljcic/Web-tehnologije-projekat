@@ -6,7 +6,6 @@
 	<meta charset="UTF-8">
 </head>
 <body>
-
 	<div class="meni">
 		<div id="logo">
 			<img src="logo.jpg" alt="Logo">
@@ -24,42 +23,41 @@
 	<div class="sadrzaj">
 
 		<label>Sale</label>
-		<select id = "listaSala">
-			<option value = "1">0-01</option>
-			<option value = "2">0-02</option>
-			<option value = "3">0-03</option>
-			<option value = "4">0-04</option>
-			<option value = "5">0-05</option>
-			<option value = "6">0-06</option>
-			<option value = "7">0-07</option>
-			<option value = "8">0-08</option>
-			<option value = "9">0-09</option>
-			<option value = "10">1-01</option>
-			<option value = "11">1-02</option>
-			<option value = "12">1-03</option>
-			<option value = "13">1-04</option>
-			<option value = "14">1-05</option>
-			<option value = "15">1-06</option>
-			<option value = "16">1-07</option>
-			<option value = "17">1-08</option>
-			<option value = "18">1-09</option>
-			<option value = "14">VA1</option>
-			<option value = "15">VA2</option>
-			<option value = "16">MA</option>
-			<option value = "17">EE1</option>
-			<option value = "18">EE2</option>
+		<select onchange="osvjeziSale();" id = "listaSala">
+			<option value = "0-01">0-01</option>
+			<option value = "0-02">0-02</option>
+			<option value = "0-03">0-03</option>
+			<option value = "0-04">0-04</option>
+			<option value = "0-05">0-05</option>
+			<option value = "0-06">0-06</option>
+			<option value = "0-07">0-07</option>
+			<option value = "0-08">0-08</option>
+			<option value = "0-09">0-09</option>
+			<option value = "1-01">1-01</option>
+			<option value = "1-02">1-02</option>
+			<option value = "1-03">1-03</option>
+			<option value = "1-04">1-04</option>
+			<option value = "1-05">1-05</option>
+			<option value = "1-06">1-06</option>
+			<option value = "1-07">1-07</option>
+			<option value = "1-08">1-08</option>
+			<option value = "1-09">1-09</option>
+			<option value = "VA1">VA1</option>
+			<option value = "VA2">VA2</option>
+			<option value = "MA">MA</option>
+			<option value = "EE1">EE1</option>
+			<option value = "EE2">EE2</option>
 
 		</select>
 		<label>Periodičnost</label>
 		<input type="checkbox" name="rezervacija" value="DA">
 		<label>Početak</label>
-		<input type="time" name="pocetak">
+		<input onchange="osvjeziSale()" type="time" name="pocetak" id="pocetak">
 		<label>Kraj</label>
-		<input type="time" name="kraj">
-		
+		<input onchange="osvjeziSale()" type="time" name="kraj" id="kraj">
 
 		<table id="tabelaKalendar">
-			<caption>Novembar</caption>
+			<caption>April</caption>
 			<tr id="Dani">
 				<td>PON</td>
 				<td>UTO</td>
@@ -69,55 +67,11 @@
 				<td>SUB</td>
 				<td>NED</td>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td class="slobodna">1</td>
-				<td class="slobodna">2</td>
-				<td class="slobodna">3</td>
-			</tr>
-			<tr>
-				<td class="slobodna">4</td>
-				<td class="zauzeta">5</td>
-				<td class="slobodna">6</td>
-				<td class="slobodna">7</td>
-				<td class="slobodna">8</td>
-				<td class="slobodna">9</td>
-				<td class="slobodna">10</td>
-			</tr>
-			<tr>
-				<td class="slobodna">11</td>
-				<td class="zauzeta">12</td>
-				<td class="slobodna">13</td>
-				<td class="slobodna">14</td>
-				<td class="slobodna">15</td>
-				<td class="slobodna">16</td>
-				<td class="slobodna">17</td>
-			</tr>
-			<tr>
-				<td class="slobodna">18</td>
-				<td class="zauzeta">19</td>
-				<td class="slobodna">20</td>
-				<td class="slobodna">21</td>
-				<td class="slobodna">22</td>
-				<td class="slobodna">23</td>
-				<td class="slobodna">24</td>
-			</tr>
-			<tr>
-				<td class="slobodna">25</td>
-				<td class="zauzeta">26</td>
-				<td class="slobodna">27</td>
-				<td class="slobodna">28</td>
-				<td class="slobodna">29</td>
-				<td class="slobodna">30</td>
-				<td></td>
-			</tr>	
 		</table>
-		<a href="#" class="prethodni">Prethodni</a>
-		<a href="#" class="sljedeci">Sljedeći</a>
+		<a onclick="Prethodni()" href="#" class="prethodni">Prethodni</a>
+		<a onclick="Sljedeci()" href="#" class="sljedeci">Sljedeći</a>
 	</div>
+<script src="kalendar.js"></script>
 </body>
 </html>
 

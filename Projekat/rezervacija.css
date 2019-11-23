@@ -34,12 +34,14 @@
 
 #tabelaKalendar {
   table-layout: fixed;
-  width: 100%;
+  width: 60%;
   border: 3px solid #3d699c;
   padding: 1.5%;
   empty-cells: hide;
   background-color: #b0c4dd;
   margin-bottom: 2%;
+  margin-right: 20%;
+  margin-left: 20%;
 }
 
 #listaSala {
@@ -75,10 +77,12 @@ tr {
 
 .prethodni {
   float: left;
+  margin-left: 20%;
 }
 
 .sljedeci {
   float: right;
+  margin-right: 20%;
 }
 
 .zauzeta {
