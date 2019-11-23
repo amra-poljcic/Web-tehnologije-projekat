@@ -50,7 +50,7 @@ let Kalendar = ( function() {
 	function obojiZauzecaImpl (kalendarRef, mjesec, sala, pocetak, kraj) {
 		obojiUZelene(kalendarRef);
 		for(var i = 0; i<stalni.length; i++){
-			if(provjeriVrijeme(pocetak,kraj) && sala === stalni[i].naziv && provjeriSemestar(stalni[i].semestar,mjesec+1) && 
+			if(provjeriVrijeme(pocetak,kraj) && provjeriVrijeme(stalni[i].pocetak,stalni[i].kraj) && sala === stalni[i].naziv && provjeriSemestar(stalni[i].semestar,mjesec+1) && 
 				pocetak === stalni[i].pocetak && kraj === stalni[i].kraj ) obojiStalne(kalendarRef,stalni[i]); 
 		}
 
@@ -133,9 +133,9 @@ window.onload = function(){
 	Kalendar.iscrtajKalendar(kalendar, mjesec);
 
 	var privremeni = [{datum: "04.04.2019", pocetak: "09:00", kraj: "12:00", naziv: "MA", predavac: "Tom"},
-	{datum: "21.11.2019", pocetak: "09:00", kraj: "10:00", naziv: "MA", predavac: "Pepeljuga"},
+	{datum: "21.11.2019", pocetak: "15:00", kraj: "09:00", naziv: "MA", predavac: "Pepeljuga"},
 	{datum: "22.11.2019", pocetak: "15:00", kraj: "18:00", naziv: "MA", predavac: "Merlin"},
-	{datum: "15.11.2019", pocetak: "10:00", kraj: "11:00", naziv: "EE1", predavac: "Mumi"},
+	{datum: "15.11.2019", pocetak: "23:15", kraj: "55:00", naziv: "EE1", predavac: "Mumi"},
 	{datum: "15.11.2019", pocetak: "10:00", kraj: "11:00", naziv: "EE2 ", predavac: "Mumi"},
 	{datum: "20.10.2019", pocetak: "09:00", kraj: "12:00", naziv: "VA", predavac: "Smrdo"},
 	{datum: "01.01.2019", pocetak: "14:00", kraj: "16:00", naziv: "MA", predavac: "Gargamel"},
@@ -163,6 +163,7 @@ function Sljedeci() {
 		Kalendar.iscrtajKalendar(kalendar, mjesec);
 		osvjeziSale();
 	}
+	document.getElementById("sljedeci").disabled=true;
 }
 
 function brisi(kalendar) {
@@ -177,6 +178,7 @@ function Prethodni() {
 		Kalendar.iscrtajKalendar(kalendar, mjesec);
 		osvjeziSale();
 	}
+    document.getElementById("prethodni").disabled=true;
 }
 
 function osvjeziSale() {
