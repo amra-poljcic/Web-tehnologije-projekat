@@ -55,4 +55,71 @@ app.get('/ucitajSlike', function (req, res) {
 		res.send([image1,image2,image3]);
 	})();
 });
+
+app.post('/vanredniRezervisi',function(req, res) {
+	var primljeno = req.body;
+	fs.readFile('zauzeca.json', (err, data) => {
+		if (err) throw err;
+		var zauzeca = JSON.parse(data);
+		var dan;
+		var mjesec;
+		if(parseInt(primljeno["dan"])<10) dan = "0"+primljeno["dan"];
+		else dan = primljeno["dan"];
+		if(parseInt(primljeno["mjesec"])<10) mjesec = "0"+primljeno["mjesec"];
+		else mjesec = primljeno["mjesec"];
+		var datum;
+		datum = dan +"." + mjesec + "." + primljeno["godina"];
+		var sala = primljeno["sala"];
+		for(var i =0; i<zauzeca.vanredna.length; i++){
+			if(zauzeca.vanredna[i].datum == datum){
+				if(zauzeca.vanredna[i].naziv == sala) {
+					if(provjeriVrijeme(primljeno["pocetak"], primljeno["kraj"], zauzeca.vanredna[i].pocetak, zauzeca.vanredna[i].kraj)) {
+						res.status(500).send({ error: "Nemoguca rezervacija, zauzet termin" });
+						return;
+					}
+				}
+			}	
+		}
+		zauzeca.vanredna.push({"datum": datum,"pocetak": primljeno["pocetak"],"kraj": primljeno["kraj"],"naziv": sala,"predavac": primljeno["predavac"]});
+		fs.writeFile('zauzeca.json', JSON.stringify(zauzeca), function (err) {
+			if (err) throw err;
+			res.send(zauzeca);
+		});
+		
+	});
+});
+
+app.post('/periodicniRezervisi',function(req, res) {
+	var primljeno = req.body;
+	fs.readFile('zauzeca.json', (err, data) => {
+		if (err) throw err;
+		var zauzeca = JSON.parse(data);
+		var sala = primljeno["sala"];
+		for(var i =0; i<zauzeca.periodicna.length; i++){
+			if(zauzeca.periodicna[i].semestar == primljeno["semestar"] && zauzeca.periodicna[i].dan == primljeno["danUSedmici"] ){
+				if(zauzeca.periodicna[i].naziv == sala) {
+					if(provjeriVrijeme(primljeno["pocetak"], primljeno["kraj"], zauzeca.periodicna[i].pocetak, zauzeca.periodicna[i].kraj)) {
+						res.status(500).send({ error: "Nemoguca rezervacija, zauzet termin" });
+						return;
+					}
+				}
+			}	
+		}
+		zauzeca.periodicna.push({"dan": primljeno["danUSedmici"],"semestar":primljeno["semestar"],"pocetak": primljeno["pocetak"],"kraj": primljeno["kraj"],"naziv": sala,"predavac": primljeno["predavac"]});
+		fs.writeFile('zauzeca.json', JSON.stringify(zauzeca), function (err) {
+			if (err) throw err;
+			res.send(zauzeca);
+		});
+	});
+});
+
+
+function provjeriVrijeme(x1, x2, y1, y2) {
+	var dPocetak = new Date(2019,1,1, parseInt(x1[0] + x1[1]), parseInt(x1[3] + x1[4]));
+	var dKraj = new Date(2019,1,1, parseInt(x2[0] + x2[1]), parseInt(x2[3] + x2[4]));
+	var d2Pocetak = new Date(2019,1,1, parseInt(y1[0] + y1[1]), parseInt(y1[3] + y1[4]));
+	var d2Kraj = new Date(2019,1,1, parseInt(y2[0] + y2[1]), parseInt(y2[3] + y2[4]));
+	return dPocetak.getTime() <= d2Kraj.getTime() && d2Pocetak.getTime() <= dKraj.getTime();
+}
+
 app.listen(8080);

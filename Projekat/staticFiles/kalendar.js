@@ -45,19 +45,29 @@ let Kalendar = ( function() {
 			krajMinute > 59) return false;
 
 			return true;
+
+
+	}
+
+	function provjeriVrijeme2(x1, x2, y1, y2) {
+		var dPocetak = new Date(2019,1,1, parseInt(x1[0] + x1[1]), parseInt(x1[3] + x1[4]));
+		var dKraj = new Date(2019,1,1, parseInt(x2[0] + x2[1]), parseInt(x2[3] + x2[4]));
+		var d2Pocetak = new Date(2019,1,1, parseInt(y1[0] + y1[1]), parseInt(y1[3] + y1[4]));
+		var d2Kraj = new Date(2019,1,1, parseInt(y2[0] + y2[1]), parseInt(y2[3] + y2[4]));
+		return dPocetak.getTime() <= d2Kraj.getTime() && d2Pocetak.getTime() <= dKraj.getTime();
 	}
 
 	function obojiZauzecaImpl (kalendarRef, mjesec, sala, pocetak, kraj) {
 		obojiUZelene(kalendarRef);
 		for(var i = 0; i<stalni.length; i++){
 			if(provjeriVrijeme(pocetak,kraj) && provjeriVrijeme(stalni[i].pocetak,stalni[i].kraj) && sala === stalni[i].naziv && provjeriSemestar(stalni[i].semestar,mjesec+1) && 
-				pocetak === stalni[i].pocetak && kraj === stalni[i].kraj ) obojiStalne(kalendarRef,stalni[i]); 
+				provjeriVrijeme2(pocetak, kraj, stalni[i].pocetak, stalni[i].kraj) ) obojiStalne(kalendarRef,stalni[i]); 
 		}
 
 	for (var i = 0; i < privremeni.length; i++) {
 		var mjesecPrivremeni = parseInt(privremeni[i].datum.substring(3,5),10);
 		if(provjeriVrijeme(pocetak,kraj) && sala === privremeni[i].naziv && provjeriMjesec(mjesecPrivremeni,mjesec+1) &&
-			pocetak === privremeni[i].pocetak && kraj === privremeni[i].kraj ) obojiPrivremene(kalendarRef,privremeni[i]); 
+			provjeriVrijeme2(pocetak, kraj, privremeni[i].pocetak, privremeni[i].kraj) ) obojiPrivremene(kalendarRef,privremeni[i]); 
 	}
 }
 function obojiStalne(kalendarRef,termin){
@@ -111,6 +121,7 @@ function iscrtajKalendarImpl (kalendarRef, mjesec){
 			else {
 				cell.className = "slobodna";
 				cell.innerHTML = ispisao;
+				cell.onclick =  function() { klikni(this); };
 				ispisao++;
 			}
 		} 
