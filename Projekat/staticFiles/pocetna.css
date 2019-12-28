@@ -30,6 +30,7 @@
 .sadrzaj {
 	padding: 2%;
 	width: 95.6%;
+	float: left;
 }
 
 .sadrzaj img {
@@ -38,6 +39,22 @@
 	height: auto;
 	padding-top: 2%;  
 	margin: auto;    
+}
+
+.prethodni, .sljedeci {
+  padding: 1%;
+  border: 3px solid #3d699c;
+  text-decoration: none;
+  color: black;
+  margin-top: 20px;
+}
+
+.prethodni {
+  float: left;
+}
+
+.sljedeci {
+  float: right;
 }
 
 body {
