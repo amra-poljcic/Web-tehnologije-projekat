@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const fs = require('fs');
 const urlExist = require("url-exist");
+const baza = require('./db.js');
+
 
 
 app.use(bodyParser.json());
@@ -12,6 +14,12 @@ app.use(express.static('staticFiles'));
 
 app.get('/', function (req, res) {
 	res.sendFile(__dirname + "/pocetna.html");
+});
+
+app.get('/osoblje', function (req, res) {
+		baza.osoblje.findAll().then(function(osobe){
+	    res.send(osobe);
+    });
 });
 
 app.get('/pocetna.html', function (req, res) {

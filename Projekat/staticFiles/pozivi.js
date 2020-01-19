@@ -61,12 +61,33 @@ let Pozivi = ( function() {
 		ajax.send(JSON.stringify({danUSedmici:danUSedmici,semestar:semestar,dan:dan,mjesec:mjesec,godina:godina,pocetak:pocetak,kraj:kraj,sala:sala,predavac:predavac}));
 	}
 
+	function ucitajOsobljeImpl () {
+		var ajax = new XMLHttpRequest();
+
+		ajax.onreadystatechange = function () {
+			if (ajax.readyState == 4 && ajax.status == 200) {
+				
+				var osoblje = JSON.parse(ajax.responseText);
+
+				var listaOsoba = document.getElementById("listaOsoba");
+				for(var i = 0; i<osoblje.length; i++){
+				var vrijednost = document.createElement("option");
+				vrijednost.text = osoblje[i].ime + ' ' + osoblje[i].prezime;
+				listaOsoba.options.add(vrijednost, 1);
+				}
+			}
+		}
+		ajax.open("GET", "http://localhost:8080/osoblje", true);
+		ajax.send();
+	}
+
 
 	return {
 		ucitajPodatke: ucitajPodatkeImpl,
 		ucitajSlike: ucitajSlikeImpl,
 		vanredniRezervisi: vanredniRezervisiImpl,
-		periodicniRezervisi: periodicniRezervisiImpl
+		periodicniRezervisi: periodicniRezervisiImpl,
+		ucitajOsoblje: ucitajOsobljeImpl
 	}
 }
 ())

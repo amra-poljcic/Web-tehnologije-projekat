@@ -12,6 +12,7 @@ var predavaci = ['Tom','MikiMaus','PajaPatak','Pepeljuga','Crvenkapica','MalaMu'
 window.onload = function(){
 	Kalendar.iscrtajKalendar(kalendar, mjesec);
 	Pozivi.ucitajPodatke();
+	Pozivi.ucitajOsoblje();
 }
 
 function Sljedeci() {

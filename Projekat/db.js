@@ -23,6 +23,11 @@ db.sala.hasMany(db.rezervacija,{foreignKey:'sala'});
 db.termin.hasOne(db.rezervacija,{foreignKey:'termin'});
 db.osoblje.hasOne(db.sala,{foreignKey:'zaduzenaOsoba'});
 
+db.rezervacija.belongsTo(db.osoblje,{foreignKey:'osoba', as:'rezervacijaOsoblje', constraints: false});
+db.rezervacija.belongsTo(db.termin,{foreignKey:'termin', as:'rezervacijaTermin', constraints: false});
+db.rezervacija.belongsTo(db.sala,{foreignKey:'sala', as:'rezervacijaSala', constraints: false});
+db.sala.belongsTo(db.osoblje,{foreignKey:'zaduzenaOsoba', as:'salaOsoblje', constraints: false});
+
 db.sequelize.sync({force:true}).then(function () {
 	unosPodataka();
 });
