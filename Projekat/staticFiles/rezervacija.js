@@ -13,6 +13,7 @@ window.onload = function(){
 	Kalendar.iscrtajKalendar(kalendar, mjesec);
 	Pozivi.ucitajPodatke();
 	Pozivi.ucitajOsoblje();
+	Pozivi.ucitajSale();
 }
 
 function Sljedeci() {

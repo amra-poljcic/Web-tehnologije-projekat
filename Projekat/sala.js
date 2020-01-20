@@ -7,7 +7,12 @@ module.exports = function(sequelize,DataTypes){
 			primaryKey: true
 		},
 		naziv:Sequelize.STRING,
-		
+		zaduzenaOsoba: {
+			type: Sequelize.INTEGER,
+			references: {
+				model: "osoblje"
+			}
+		}
 	},{
 		timestamps: false,
 		freezeTableName: true

@@ -4,6 +4,7 @@ const app = express();
 const fs = require('fs');
 const urlExist = require("url-exist");
 const baza = require('./db.js');
+const { Op } = require("sequelize");
 
 
 
@@ -16,14 +17,12 @@ app.get('/', function (req, res) {
 	res.sendFile(__dirname + "/pocetna.html");
 });
 
-app.get('/osoblje', function (req, res) {
-		baza.osoblje.findAll().then(function(osobe){
-	    res.send(osobe);
-    });
-});
-
 app.get('/pocetna.html', function (req, res) {
 	res.sendFile(__dirname + "/pocetna.html");
+});
+
+app.get('/osobe.html', function (req, res) {
+	res.sendFile(__dirname + "/osobe.html");
 });
 
 app.get('/sale.html', function (req, res) {
@@ -38,8 +37,54 @@ app.get('/rezervacija.html', function (req, res) {
 	res.sendFile(__dirname + "/rezervacija.html");
 });
 
-app.get('/ucitajPodatke', function (req, res) {
-	res.sendFile(__dirname + "/zauzeca.json");
+app.get('/ucitajRezervacije', function (req, res) {
+	baza.rezervacija.findAll({
+		include:[
+		{
+			model:baza.osoblje, as:'rezervacijaOsoblje'
+		},{
+			model:baza.termin, as:'rezervacijaTermin'
+		},{
+			model:baza.sala, as:'rezervacijaSala'
+		}]
+	}).then(function(rezervacije){
+		var zauzeca = { vanredna:[], periodicna:[] };
+		for(var i = 0; i<rezervacije.length; i++){
+			if(!rezervacije[i].rezervacijaTermin.redovni){
+				var rezervacija = { 
+					datum : rezervacije[i].rezervacijaTermin.datum,
+					pocetak : rezervacije[i].rezervacijaTermin.pocetak,
+					kraj : rezervacije[i].rezervacijaTermin.kraj,
+					naziv : rezervacije[i].rezervacijaSala.naziv,
+					predavac : rezervacije[i].rezervacijaOsoblje.ime + ' ' + rezervacije[i].rezervacijaOsoblje.prezime
+				}; 
+				zauzeca.vanredna.push(rezervacija);
+			} else {
+				var rezervacija = { 
+					dan : rezervacije[i].rezervacijaTermin.dan,
+					semestar : rezervacije[i].rezervacijaTermin.semestar,
+					pocetak : rezervacije[i].rezervacijaTermin.pocetak,
+					kraj : rezervacije[i].rezervacijaTermin.kraj,
+					naziv : rezervacije[i].rezervacijaSala.naziv,
+					predavac : rezervacije[i].rezervacijaOsoblje.ime + ' ' + rezervacije[i].rezervacijaOsoblje.prezime
+				}; 
+				zauzeca.periodicna.push(rezervacija);
+			}
+		}
+		res.send(zauzeca);
+	});
+});
+
+app.get('/osoblje', function (req, res) {
+	baza.osoblje.findAll().then(function(osobe){
+		res.send(osobe);
+	});
+});
+
+app.get('/sale', function (req, res) {
+	baza.sala.findAll().then(function(sale){
+		res.send(sale);
+	});
 });
 
 app.get('/ucitajSlike', function (req, res) {
@@ -121,6 +166,53 @@ app.post('/periodicniRezervisi',function(req, res) {
 	});
 });
 
+app.get('/listaOsoblja', function (req, res) {
+	var datum = new Date();
+	var danUSedmici = datum.getDay();
+	var dan = datum.getDate();
+	var mjesec = datum.getMonth() + 1;
+	var godina = datum.getFullYear();
+	var sati = datum.getHours();
+	var minute = datum.getMinutes();
+	datum = dan + '.' + mjesec + '.' + godina;
+	var semestar;
+	if(mjesec>=10 || mjesec ==1) semestar = "zimski";
+	else semestar = "ljetni";
+	var nizOsoba = [];
+	baza.rezervacija.findAll({
+		include:[
+		{
+			model:baza.osoblje, as:'rezervacijaOsoblje', required: false, right: true
+		},{
+			//model:baza.termin, where:{[Op.or]:[{dan:null,datum:datum},{datum:null,semestar:semestar,dan:danUSedmici}]}, as:'rezervacijaTermin'
+			model:baza.termin, where:{[Op.or]:[{dan:null},{datum:null,semestar:semestar}]}, as:'rezervacijaTermin', required: false
+		},{
+			model:baza.sala, as:'rezervacijaSala', required: false
+		}],
+		required: false
+	}).then(function(rezervacije){
+		for(var i = 0; i<rezervacije.length; i++) {
+			if (rezervacije[i].rezervacijaTermin == null)
+				continue;
+			var pocetak = rezervacije[i].rezervacijaTermin.pocetak.substring(0,5);
+			var kraj = rezervacije[i].rezervacijaTermin.kraj.substring(0,5);
+			if(provjeriVrijeme(sati+':'+minute,sati+':'+minute,pocetak,kraj)){
+				var osoba = {osoba: rezervacije[i].rezervacijaOsoblje.ime + ' ' + rezervacije[i].rezervacijaOsoblje.prezime,
+				sala: rezervacije[i].rezervacijaSala.naziv };
+				nizOsoba.push(osoba);
+			}
+		}
+		for(var i = 0; i<rezervacije.length; i++) {
+			const found = nizOsoba.some(objekat => objekat.osoba === rezervacije[i].rezervacijaOsoblje.ime + ' ' + rezervacije[i].rezervacijaOsoblje.prezime);
+			if (found)
+				continue;
+			var osoba = {osoba: rezervacije[i].rezervacijaOsoblje.ime + ' ' + rezervacije[i].rezervacijaOsoblje.prezime,
+			sala: 'u kancelariji'};
+			nizOsoba.push(osoba);
+		}
+		res.send(nizOsoba);
+	});
+});
 
 function provjeriVrijeme(x1, x2, y1, y2) {
 	var dPocetak = new Date(2019,1,1, parseInt(x1[0] + x1[1]), parseInt(x1[3] + x1[4]));

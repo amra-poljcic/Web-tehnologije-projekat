@@ -6,6 +6,24 @@ module.exports = function(sequelize,DataTypes){
 			type: Sequelize.INTEGER,
 			primaryKey: true
 		},
+		termin: {
+			type: Sequelize.INTEGER,
+			references: {
+				model: "termin"
+			}
+		},
+		sala: {
+			type: Sequelize.INTEGER,
+			references: {
+				model: "sala"
+			}
+		},
+		osoba: {
+			type: Sequelize.INTEGER,
+			references: {
+				model: "osoblje"
+			}
+		}
 	},{
 		timestamps: false,
 		freezeTableName: true

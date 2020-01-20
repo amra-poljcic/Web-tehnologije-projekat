@@ -9,7 +9,7 @@ let Pozivi = ( function() {
 				osvjeziSale();
 			}
 		}
-		ajax.open("GET", "http://localhost:8080/ucitajPodatke", true);
+		ajax.open("GET", "http://localhost:8080/ucitajRezervacije", true);
 		ajax.send();
 
 	}
@@ -71,9 +71,9 @@ let Pozivi = ( function() {
 
 				var listaOsoba = document.getElementById("listaOsoba");
 				for(var i = 0; i<osoblje.length; i++){
-				var vrijednost = document.createElement("option");
-				vrijednost.text = osoblje[i].ime + ' ' + osoblje[i].prezime;
-				listaOsoba.options.add(vrijednost, 1);
+					var vrijednost = document.createElement("option");
+					vrijednost.text = osoblje[i].ime + ' ' + osoblje[i].prezime;
+					listaOsoba.options.add(vrijednost, 1);
 				}
 			}
 		}
@@ -81,13 +81,58 @@ let Pozivi = ( function() {
 		ajax.send();
 	}
 
+	function ucitajSaleImpl () {
+		var ajax = new XMLHttpRequest();
+
+		ajax.onreadystatechange = function () {
+			if (ajax.readyState == 4 && ajax.status == 200) {
+				
+				var sale = JSON.parse(ajax.responseText);
+
+				var listaSala = document.getElementById("listaSala");
+				for(var i = 0; i<sale.length; i++){
+					var vrijednost = document.createElement("option");
+					vrijednost.text = sale[i].naziv;
+					listaSala.options.add(vrijednost, 1);
+				}
+			}
+		}
+		ajax.open("GET", "http://localhost:8080/sale", true);
+		ajax.send();
+	}
+
+	function listaOsobljaImpl () {
+		var ajax = new XMLHttpRequest();
+		console.log('Provjera');
+		ajax.onreadystatechange = function () {
+			if (ajax.readyState == 4 && ajax.status == 200) {
+				
+				var osoblje = JSON.parse(ajax.responseText);
+
+				var tabelaOsobe = document.getElementById("tabelaOsobe");
+				tabelaOsobe.innerHTML = '<tr id="Naslov"><td>OSOBA</td><td>SALA</td></tr>';
+				for(var i = 0; i<osoblje.length; i++){
+					var tr = tabelaOsobe.insertRow(i+1) 
+					var cell1 = tr.insertCell(0);
+					var cell2 = tr.insertCell(1);
+					cell1.innerHTML = osoblje[i].osoba;
+					cell2.innerHTML = osoblje[i].sala;
+				}
+			}
+		}
+		ajax.open("GET", "http://localhost:8080/listaOsoblja", true);
+		ajax.send();
+	}	
+
 
 	return {
 		ucitajPodatke: ucitajPodatkeImpl,
 		ucitajSlike: ucitajSlikeImpl,
 		vanredniRezervisi: vanredniRezervisiImpl,
 		periodicniRezervisi: periodicniRezervisiImpl,
-		ucitajOsoblje: ucitajOsobljeImpl
+		ucitajOsoblje: ucitajOsobljeImpl,
+		ucitajSale: ucitajSaleImpl,
+		listaOsoblja: listaOsobljaImpl
 	}
 }
 ())
