@@ -4,6 +4,7 @@ var mjesec = datum.getMonth();
 var vrijemePocetak = document.getElementById("pocetak");
 var vrijemeKraj = document.getElementById("kraj");  
 var sala = document.getElementById("listaSala");
+var osoba = document.getElementById("listaOsoba");
 var tabela = document.getElementById("tabelaKalendar");
 var imeMjeseci = ['Januar','Februar','Mart','April','Maj','Juni','Juli','August','Septembar','Oktobar','Novembar','Decembar'];
 var periodicnost = document.getElementById("periodicnost");
@@ -37,7 +38,7 @@ function Prethodni() {
 		Kalendar.iscrtajKalendar(kalendar, mjesec);
 		osvjeziSale();
 	}
-    document.getElementById("prethodni").disabled=true;
+	document.getElementById("prethodni").disabled=true;
 }
 
 
@@ -51,25 +52,23 @@ function klikni(celija) {
 		else {
 			var izbor = confirm("Da li zelite rezervirati termin?");
 			if(izbor) {
-				if(periodicnost.checked){
-					if (mjesec>=2 && mjesec <=6)
-						semestar = "ljetni";
-					if (mjesec>=10 || mjesec === 1)
-						semestar = "zimski";	
-				Pozivi.periodicniRezervisi(celija.cellIndex,semestar,dan, mjesec,datum.getFullYear(),vrijemePocetak.value,vrijemeKraj.value,sala.value,"Tom");
-					
+				if (mjesec>=2 && mjesec <=6)
+					semestar = "ljetni";
+				if (mjesec>=10 || mjesec === 1)
+					semestar = "zimski";
+				if(periodicnost.checked) {
+					Pozivi.periodicniRezervisi(celija.cellIndex,semestar,dan, mjesec,datum.getFullYear(),vrijemePocetak.value,vrijemeKraj.value,sala.value,osoba.value);
 				}
-				else{
-				Pozivi.vanredniRezervisi(dan, mjesec,datum.getFullYear(),vrijemePocetak.value,vrijemeKraj.value,sala.value,"Tom");
+				else {
+					Pozivi.vanredniRezervisi(dan, mjesec,datum.getFullYear(),vrijemePocetak.value,vrijemeKraj.value,sala.value,osoba.value, celija.cellIndex, semestar);
+				}
 
-				}
-					
 			}
 		}
 	}
 	else 
 		alert("Nije moguće rezervisati salu " + sala.value +" za navedeni datum "+ 
-		dan+ "/"+ mjesec + "/" + datum.getFullYear() + " i termin od "+ vrijemePocetak.value + " do " + vrijemeKraj.value +"!");	
+			dan+ "/"+ mjesec + "/" + datum.getFullYear() + " i termin od "+ vrijemePocetak.value + " do " + vrijemeKraj.value +"!");	
 }
 
 function osvjeziSale() {

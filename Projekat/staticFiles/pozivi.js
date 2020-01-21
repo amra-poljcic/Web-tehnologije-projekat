@@ -27,7 +27,7 @@ let Pozivi = ( function() {
 		ajax.send();
 	}
 
-	function vanredniRezervisiImpl(dan, mjesec, godina, pocetak, kraj, sala, predavac){
+	function vanredniRezervisiImpl(dan, mjesec, godina, pocetak, kraj, sala, predavac, danUSedmici, semestar){
 		var ajax = new XMLHttpRequest();
 		ajax.onreadystatechange = function() {
 			if (ajax.readyState == 4 && ajax.status == 200){
@@ -35,13 +35,15 @@ let Pozivi = ( function() {
 				Kalendar.ucitajPodatke(ucitaniPodaci.periodicna,ucitaniPodaci.vanredna);
 				osvjeziSale();
 			}
-			if(ajax.readyState == 4 && ajax.status == 500)
-				alert("Nije moguće rezervisati salu " + sala+" za navedeni datum "+ 
-					dan+ "/"+ mjesec + "/" + godina + " i termin od "+ pocetak + " do " + kraj +"!");	
+			if(ajax.readyState == 4 && ajax.status == 500) {
+				ucitajPodatkeImpl();
+				alert("Salu " + sala+" za navedeni datum "+ 
+					dan+ "/"+ mjesec + "/" + godina + " i termin od "+ pocetak + " do " + kraj +" rezervisala je osoba " + predavac+"!");	
+			}
 		}
 		ajax.open("POST","http://localhost:8080/vanredniRezervisi",true);
 		ajax.setRequestHeader("Content-Type", "application/json");
-		ajax.send(JSON.stringify({dan:dan,mjesec:mjesec,godina:godina,pocetak:pocetak,kraj:kraj,sala:sala,predavac:predavac}));
+		ajax.send(JSON.stringify({dan:dan,mjesec:mjesec,godina:godina,pocetak:pocetak,kraj:kraj,sala:sala,predavac:predavac,danUSedmici:danUSedmici,semestar:semestar}));
 	}
 
 	function periodicniRezervisiImpl(danUSedmici,semestar,dan, mjesec,godina,pocetak,kraj,sala,predavac){
@@ -52,9 +54,11 @@ let Pozivi = ( function() {
 				Kalendar.ucitajPodatke(ucitaniPodaci.periodicna,ucitaniPodaci.vanredna);
 				osvjeziSale();
 			}
-			if(ajax.readyState == 4 && ajax.status == 500)
-				alert("Nije moguće rezervisati salu " + sala+" za navedeni datum "+ 
-					dan+ "/"+ mjesec + "/" + godina + " i termin od "+ pocetak + " do " + kraj +"!");	
+			if(ajax.readyState == 4 && ajax.status == 500) {
+				ucitajPodatkeImpl();
+				alert("Salu " + sala+" za navedeni datum "+ 
+					dan+ "/"+ mjesec + "/" + godina + " i termin od "+ pocetak + " do " + kraj +" rezervisala je osoba " + predavac+"!");
+			}
 		}
 		ajax.open("POST","http://localhost:8080/periodicniRezervisi",true);
 		ajax.setRequestHeader("Content-Type", "application/json");

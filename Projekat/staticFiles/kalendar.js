@@ -60,16 +60,16 @@ let Kalendar = ( function() {
 	function obojiZauzecaImpl (kalendarRef, mjesec, sala, pocetak, kraj) {
 		obojiUZelene(kalendarRef);
 		for(var i = 0; i<stalni.length; i++){
-			if(provjeriVrijeme(pocetak,kraj) && provjeriVrijeme(stalni[i].pocetak,stalni[i].kraj) && sala === stalni[i].naziv && provjeriSemestar(stalni[i].semestar,mjesec+1) && 
-				provjeriVrijeme2(pocetak, kraj, stalni[i].pocetak, stalni[i].kraj) ) obojiStalne(kalendarRef,stalni[i]); 
+			if(provjeriVrijeme(pocetak,kraj) && provjeriVrijeme(stalni[i].pocetak.substring(0,5),stalni[i].kraj.substring(0,5)) && sala === stalni[i].naziv && provjeriSemestar(stalni[i].semestar,mjesec+1) && 
+				provjeriVrijeme2(pocetak, kraj, stalni[i].pocetak.substring(0,5), stalni[i].kraj.substring(0,5)) ) obojiStalne(kalendarRef,stalni[i]); 
 		}
 
-	for (var i = 0; i < privremeni.length; i++) {
-		var mjesecPrivremeni = parseInt(privremeni[i].datum.substring(3,5),10);
-		if(provjeriVrijeme(pocetak,kraj) && sala === privremeni[i].naziv && provjeriMjesec(mjesecPrivremeni,mjesec+1) &&
-			provjeriVrijeme2(pocetak, kraj, privremeni[i].pocetak, privremeni[i].kraj) ) obojiPrivremene(kalendarRef,privremeni[i]); 
+		for (var i = 0; i < privremeni.length; i++) {
+			var mjesecPrivremeni = parseInt(privremeni[i].datum.substring(3,5),10);
+			if(provjeriVrijeme(pocetak,kraj) && provjeriVrijeme(privremeni[i].pocetak.substring(0,5),privremeni[i].kraj.substring(0,5)) && sala === privremeni[i].naziv && provjeriMjesec(mjesecPrivremeni,mjesec+1) &&
+				provjeriVrijeme2(pocetak, kraj, privremeni[i].pocetak.substring(0,5), privremeni[i].kraj.substring(0,5)) ) obojiPrivremene(kalendarRef,privremeni[i]); 
+		}
 	}
-}
 function obojiStalne(kalendarRef,termin){
 	for (var i=1; i < kalendarRef.rows.length; i++) {
 		kalendarRef.rows[i].cells[termin.dan].className="zauzeta";

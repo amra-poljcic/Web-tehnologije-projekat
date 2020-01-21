@@ -4,9 +4,10 @@ const app = express();
 const fs = require('fs');
 const urlExist = require("url-exist");
 const baza = require('./db.js');
+const cors = require('cors');
 const { Op } = require("sequelize");
 
-
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true}));
@@ -38,6 +39,10 @@ app.get('/rezervacija.html', function (req, res) {
 });
 
 app.get('/ucitajRezervacije', function (req, res) {
+	ucitajRezervacije(res);
+});
+
+function ucitajRezervacije(res) {
 	baza.rezervacija.findAll({
 		include:[
 		{
@@ -73,7 +78,7 @@ app.get('/ucitajRezervacije', function (req, res) {
 		}
 		res.send(zauzeca);
 	});
-});
+}
 
 app.get('/osoblje', function (req, res) {
 	baza.osoblje.findAll().then(function(osobe){
@@ -111,59 +116,127 @@ app.get('/ucitajSlike', function (req, res) {
 
 app.post('/vanredniRezervisi',function(req, res) {
 	var primljeno = req.body;
-	fs.readFile('zauzeca.json', (err, data) => {
-		if (err) throw err;
-		var zauzeca = JSON.parse(data);
-		var dan;
-		var mjesec;
-		if(parseInt(primljeno["dan"])<10) dan = "0"+primljeno["dan"];
-		else dan = primljeno["dan"];
-		if(parseInt(primljeno["mjesec"])<10) mjesec = "0"+primljeno["mjesec"];
-		else mjesec = primljeno["mjesec"];
-		var datum;
-		datum = dan +"." + mjesec + "." + primljeno["godina"];
-		var sala = primljeno["sala"];
-		for(var i =0; i<zauzeca.vanredna.length; i++){
-			if(zauzeca.vanredna[i].datum == datum){
-				if(zauzeca.vanredna[i].naziv == sala) {
-					if(provjeriVrijeme(primljeno["pocetak"], primljeno["kraj"], zauzeca.vanredna[i].pocetak, zauzeca.vanredna[i].kraj)) {
-						res.status(500).send({ error: "Nemoguca rezervacija, zauzet termin" });
-						return;
-					}
-				}
-			}	
+	var dan;
+	var mjesec;
+	if(parseInt(primljeno["dan"])<10) dan = "0"+primljeno["dan"];
+	else dan = primljeno["dan"];
+	if(parseInt(primljeno["mjesec"])<10) mjesec = "0"+primljeno["mjesec"];
+	else mjesec = primljeno["mjesec"];
+	var datum;
+	datum = dan +"." + mjesec + "." + primljeno["godina"];
+	var sala = primljeno["sala"];
+	var predavac = primljeno["predavac"].split(" ");
+	var pocetak = primljeno["pocetak"];
+	var kraj = primljeno["kraj"];
+	var danUSedmici = primljeno["danUSedmici"];
+	var semestar = primljeno["semestar"];
+	var noviId;
+	var salaId;
+	var osobaId;
+	var greska = false;
+
+	baza.rezervacija.findAll({
+		include:[
+		{
+			model:baza.osoblje, as:'rezervacijaOsoblje'
+		},{
+			model:baza.termin, as:'rezervacijaTermin', where:{[Op.or]:[{dan:null,datum:datum},{datum:null,semestar:semestar,dan:danUSedmici}]}
+		},{
+			model:baza.sala, as:'rezervacijaSala'
+		}]
+	}).then(function(rezervacije){
+		for(var i = 0; i<rezervacije.length; i++){
+			var pocetak1 = rezervacije[i].rezervacijaTermin.pocetak.substring(0,5);
+			var kraj1 = rezervacije[i].rezervacijaTermin.kraj.substring(0,5);
+			if(provjeriVrijeme(pocetak, kraj, pocetak1, kraj1)){
+				// preklapanje
+				res.status(500).send({ error: "Nemoguca rezervacija, zauzet termin" });
+				return;
+			}
 		}
-		zauzeca.vanredna.push({"datum": datum,"pocetak": primljeno["pocetak"],"kraj": primljeno["kraj"],"naziv": sala,"predavac": primljeno["predavac"]});
-		fs.writeFile('zauzeca.json', JSON.stringify(zauzeca), function (err) {
-			if (err) throw err;
-			res.send(zauzeca);
+
+		baza.termin.max('id').then(function(id){
+		noviId = id + 1;
+		baza.termin.create({ id:noviId, redovni:false, datum:datum, pocetak:pocetak, kraj:kraj });
+		}).then(function () {
+			baza.sala.findOne({ where: { naziv: sala } }).then(function(sala){
+				salaId = sala.id;
+				baza.osoblje.findOne({ where: {[Op.and]: [{ ime: predavac[0] }, { prezime: predavac[1]} ]} }).then(function(osoba){
+					osobaId = osoba.id;
+					baza.rezervacija.create({ id:noviId, termin:noviId, sala:salaId, osoba:osobaId }).then(function(){
+						ucitajRezervacije(res);
+					});
+				});
+			});
 		});
-		
 	});
 });
 
+
 app.post('/periodicniRezervisi',function(req, res) {
 	var primljeno = req.body;
-	fs.readFile('zauzeca.json', (err, data) => {
-		if (err) throw err;
-		var zauzeca = JSON.parse(data);
-		var sala = primljeno["sala"];
-		for(var i =0; i<zauzeca.periodicna.length; i++){
-			if(zauzeca.periodicna[i].semestar == primljeno["semestar"] && zauzeca.periodicna[i].dan == primljeno["danUSedmici"] ){
-				if(zauzeca.periodicna[i].naziv == sala) {
-					if(provjeriVrijeme(primljeno["pocetak"], primljeno["kraj"], zauzeca.periodicna[i].pocetak, zauzeca.periodicna[i].kraj)) {
-						res.status(500).send({ error: "Nemoguca rezervacija, zauzet termin" });
-						return;
-					}
+	var dan;
+	var mjesec;
+	var semestar = primljeno["semestar"];
+	var danUSedmici = primljeno["danUSedmici"];
+	if(parseInt(primljeno["dan"])<10) dan = "0"+primljeno["dan"];
+	else dan = primljeno["dan"];
+	if(parseInt(primljeno["mjesec"])<10) mjesec = "0"+primljeno["mjesec"];
+	else mjesec = primljeno["mjesec"];
+	var datum;
+	datum = dan +"." + mjesec + "." + primljeno["godina"];
+	var sala = primljeno["sala"];
+	var predavac = primljeno["predavac"].split(" ");
+	var pocetak = primljeno["pocetak"];
+	var kraj = primljeno["kraj"];
+	var noviId;
+	var salaId;
+	var osobaId;
+
+	baza.rezervacija.findAll({
+		include:[
+		{
+			model:baza.osoblje, as:'rezervacijaOsoblje'
+		},{
+			model:baza.termin, as:'rezervacijaTermin', where:{[Op.or]:[{dan:null},{datum:null,semestar:semestar,dan:danUSedmici}]}
+		},{
+			model:baza.sala, as:'rezervacijaSala'
+		}]
+	}).then(function(rezervacije){
+		for(var i = 0; i<rezervacije.length; i++){
+			var pocetak1 = rezervacije[i].rezervacijaTermin.pocetak.substring(0,5);
+			var kraj1 = rezervacije[i].rezervacijaTermin.kraj.substring(0,5);
+			if(provjeriVrijeme(pocetak, kraj, pocetak1, kraj1)){
+				var dan = rezervacije[i].rezervacijaTermin.dan;
+				if (dan == null) {
+					var datumVanredne = rezervacije[i].rezervacijaTermin.datum;
+					var parts = datumVanredne.split('.');
+					datumVanredne = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0])); 
+					var danVanredne = datumVanredne.getDay() - 1;
+					if (danVanredne != danUSedmici)
+						continue;
 				}
-			}	
+				// preklapanje
+				res.status(500).send({ error: "Nemoguca rezervacija, zauzet termin" });
+				return;
+			}
 		}
-		zauzeca.periodicna.push({"dan": primljeno["danUSedmici"],"semestar":primljeno["semestar"],"pocetak": primljeno["pocetak"],"kraj": primljeno["kraj"],"naziv": sala,"predavac": primljeno["predavac"]});
-		fs.writeFile('zauzeca.json', JSON.stringify(zauzeca), function (err) {
-			if (err) throw err;
-			res.send(zauzeca);
+
+		baza.termin.max('id').then(function(id){
+		noviId = id + 1;
+		baza.termin.create({ id:noviId, redovni:true, dan:danUSedmici,semestar:semestar, pocetak:pocetak, kraj:kraj });
+		}).then(function () {
+			baza.sala.findOne({ where: { naziv: sala } }).then(function(sala){
+				salaId = sala.id;
+				baza.osoblje.findOne({ where: {[Op.and]: [{ ime: predavac[0] }, { prezime: predavac[1]} ]} }).then(function(osoba){
+					osobaId = osoba.id;
+					baza.rezervacija.create({ id:noviId, termin:noviId, sala:salaId, osoba:osobaId }).then(function(){
+						ucitajRezervacije(res);
+					});
+				});
+			});
 		});
-	});
+	});	
 });
 
 app.get('/listaOsoblja', function (req, res) {
@@ -184,8 +257,7 @@ app.get('/listaOsoblja', function (req, res) {
 		{
 			model:baza.osoblje, as:'rezervacijaOsoblje', required: false, right: true
 		},{
-			//model:baza.termin, where:{[Op.or]:[{dan:null,datum:datum},{datum:null,semestar:semestar,dan:danUSedmici}]}, as:'rezervacijaTermin'
-			model:baza.termin, where:{[Op.or]:[{dan:null},{datum:null,semestar:semestar}]}, as:'rezervacijaTermin', required: false
+			model:baza.termin, where:{[Op.or]:[{dan:null,datum:datum},{datum:null,semestar:semestar,dan:danUSedmici}]}, as:'rezervacijaTermin', required: false
 		},{
 			model:baza.sala, as:'rezervacijaSala', required: false
 		}],
