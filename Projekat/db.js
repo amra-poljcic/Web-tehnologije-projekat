@@ -49,9 +49,7 @@ function unosPodataka(){
 					db.termin.bulkCreate([
 						{ id:1 , redovni:false, datum:'01.01.2020', pocetak:'12:00', kraj:'13:00' },
 						{ id:2 , redovni:true, dan:0, semestar:'zimski' , pocetak:'13:00', kraj:'14:00' },
-
 						],{ignoreDuplicates: true}).then(function () {
-
 							db.rezervacija.bulkCreate([
 								{ id:1 , termin:1, sala:1, osoba:1 },
 								{ id:2 , termin:2, sala:1, osoba:3 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testiranje</title>
+	<meta charset="UTF-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css">
+	<link rel="stylesheet" href="rezervacija.css">
+	
+</head>
+<body>
+	<div id="ispis"></div>
+	<div id="mocha"></div>
+
+	<script src="https://unpkg.com/chai/chai.js"></script>
+	<script src="https://unpkg.com/mocha/mocha.js"></script>
+
+	<script class="mocha-init">
+		mocha.setup('bdd');
+		mocha.checkLeaks();
+	</script>
+
+	<div class="sadrzaj">
+
+		<label>Sale</label>
+		<select onchange="osvjeziSale();" id = "listaSala">
+		</select>
+
+		<label>Osobe</label>
+		<select id="listaOsoba">
+			
+		</select>
+
+		<label>Periodičnost</label>
+		<input id="periodicnost" type="checkbox" name="rezervacija" value="DA">
+		<label>Početak</label>
+		<input onchange="osvjeziSale()" type="time" name="pocetak" id="pocetak">
+		<label>Kraj</label>
+		<input onchange="osvjeziSale()" type="time" name="kraj" id="kraj">
+
+		<table id="tabelaKalendar">
+			<caption>April</caption>
+			<tr id="Dani">
+				<td>PON</td>
+				<td>UTO</td>
+				<td>SRI</td>
+				<td>ČET</td>
+				<td>PET</td>
+				<td>SUB</td>
+				<td>NED</td>
+			</tr>
+		</table>
+		<a onclick="Prethodni()" href="#" class="prethodni" id="prethodni">Prethodni</a>
+		<a onclick="Sljedeci()" href="#" class="sljedeci" id="sljedeci">Sljedeći</a>
+	</div>
+	<script src="kalendar.js"></script>
+	<script src="pozivi.js"></script>
+	<script src="testoviSpirala4.js"></script>
+	<script src="rezervacija.js"></script>
+	<script class="mocha-exec">
+		mocha.run();
+	</script>
+</body>
+</html>

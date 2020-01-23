@@ -133,7 +133,6 @@ app.post('/vanredniRezervisi',function(req, res) {
 	var noviId;
 	var salaId;
 	var osobaId;
-	var greska = false;
 
 	baza.rezervacija.findAll({
 		include:[
